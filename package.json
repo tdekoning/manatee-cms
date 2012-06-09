@@ -1,0 +1,14 @@
+{
+    "name": "Manatee-cms"
+  , "version": "0.0.1"
+  , "author": "Ted de Koning <teddk23@gmail.com>"
+  , "private": true
+  , "dependencies": {
+      "express": "2.5.8"
+    , "jade": ">= 0.0.1"
+    , "should": "latest"
+  }
+  , "scripts": {
+      "test": "mocha"
+  }
+}
