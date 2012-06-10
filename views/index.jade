@@ -1,5 +1,7 @@
+.menucontainer
+	#{menu}
 h1= title
 p Welcome to #{title}
 p This is page #{pageId}
-.menucontainer
-	#{menu}
+each component in page.renderedcomponents
+	#{component}

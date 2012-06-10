@@ -16,8 +16,20 @@ exports.index = function(req, res){
  * GET cms page.
  */
 exports.pages = function( pageId, res ) {
-	var page = pageService.getpages({ pid: pageId }, function( err, page ) {
-		res.render('index', {menu: menu.render(), title: page[0].title, pageId: page[0].pid});
+	pageService.getpages({ pid: pageId }, function( err, pages ) {
+		var page = pages[0];
+		page.renderedcomponents = [];
+		for( var i = 0; i < page.componenten.length; i++ ) {
+			var component = page.componenten[i];
+			console.log('component: ', component);
+			if( component == undefined || component.name == undefined || component.name.length == 0 ) { continue; }
+
+			var module = moduleloader( component.name );
+			module = new module( component );
+			page.renderedcomponents[i] = module.render();
+		}
+		console.log('componenten: ' + page.renderedcomponents);
+		res.render('index', {page: page, menu: menu.render(), title: page.title, pageId: page.pid});
 	});
 
 }

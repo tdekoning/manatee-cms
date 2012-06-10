@@ -6,7 +6,7 @@ var   fs = require('fs')
  * Standard component class.
  */
 var Component = function( res, config ) {
-	var template = 'components/menu/menu.jade';
+	var template = 'components/menu/template.jade';
 	var data = {};
 	this.init = function() {
 		pageService.getpages(function( err, pages ) {

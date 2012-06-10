@@ -43,6 +43,7 @@ app.listen(3000, function(){
 var pageService = dbconnect.page;
 var pages = pageService.getpages( {}, function( err, pages ) {
   for( var i in pages ) {
+    console.log('pagina verwijderen!');
 	  pageService.deletepage( pages[i] );
   }
   createPages();
@@ -53,17 +54,25 @@ function createPages() {
   page1.pid = 'page1';
   page1.title = 'pagina 1';
   page1.content = 'Dit is de content van pagina 1';
+  page1.componenten = [
+    {name: 'example', title: 'Dit is een testcomponent', content: 'bla bla bla bla'}
+  ];
   pageService.createpage( page1 );
 
   var page2 =  pageService.model;
   page2.pid = 'page2';
   page2.title = 'pagina 2';
   page2.content = 'Dit is de content van pagina 2';
+  page2.componenten = [];
   pageService.createpage( page2 );
 
   var page3 =  pageService.model;
   page3.pid = 'page3';
   page3.title = 'pagina 3';
+  page3.componenten = [
+    {name: 'example', title: 'Dit is een testcomponent', content: 'bla bla bla bla'},
+    {name: 'example', title: 'Dit is een testcomponent2222', content: 'kdfioskfbla bla bla bla'}
+  ];
   page3.content = 'Dit is de content van pagina 3';
 
   pageService.createpage( page3 );
