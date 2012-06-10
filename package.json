@@ -7,6 +7,8 @@
       "express": "2.5.8"
     , "jade": ">= 0.0.1"
     , "should": "latest"
+    , "mongodb": "latest"
+    , "mongoose": "latest"
   }
   , "scripts": {
       "test": "mocha"
