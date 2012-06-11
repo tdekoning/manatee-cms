@@ -2,20 +2,13 @@ var   mongoose = require('mongoose')
 	, Schema = mongoose.Schema
 
 var PageSchema = new Schema();
-var component = new Schema();
-
-component.add({
-	name: String
-	, title: String
-	, content: String
-});
 
 PageSchema.add({
 	pid: String
 	, title: String
 	, content: String
 	, template: String
-	, components: [component]
+	, components: [{}]
 });
 
 var pageModel = mongoose.model('pages', PageSchema);
