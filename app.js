@@ -43,8 +43,7 @@ app.listen(3000, function(){
 var pageService = dbconnect.page;
 var pages = pageService.getpages( {}, function( err, pages ) {
   for( var i in pages ) {
-    console.log('pagina verwijderen!');
-	  pageService.deletepage( pages[i] );
+	  pageService.deletepage( { _id: pages[i]._id } );
   }
   createPages();
 });
