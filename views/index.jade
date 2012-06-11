@@ -1,7 +1,7 @@
 .menucontainer
 	#{menu}
-h1= title
-p Welcome to #{title}
-p This is page #{pageId}
+h1 #{page.title}
+p Welcome to #{page.title}
+p This is page #{page.pid}
 each component in page.renderedcomponents
 	#{component}
