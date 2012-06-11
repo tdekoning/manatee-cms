@@ -14,7 +14,7 @@ PageSchema.add({
 	pid: String
 	, title: String
 	, content: String
-	, componenten: [component]
+	, components: [component]
 });
 
 var pageModel = mongoose.model('pages', PageSchema);

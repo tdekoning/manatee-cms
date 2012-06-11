@@ -33,7 +33,7 @@ app.configure('production', function(){
 app.get('/', routes.index);
 
 app.get('/pages/:pageId', function(req, res) {
-	routes.pages( req.params.pageId, res );
+	routes.pages( req.params.pageId, req, res );
 });
 
 app.listen(3000, function(){
@@ -54,7 +54,7 @@ function createPages() {
   page1.pid = 'page1';
   page1.title = 'pagina 1';
   page1.content = 'Dit is de content van pagina 1';
-  page1.componenten = [
+  page1.components = [
     {name: 'example', title: 'Dit is een testcomponent', content: 'bla bla bla bla'}
   ];
   pageService.createpage( page1 );
@@ -63,13 +63,13 @@ function createPages() {
   page2.pid = 'page2';
   page2.title = 'pagina 2';
   page2.content = 'Dit is de content van pagina 2';
-  page2.componenten = [];
+  page2.components = [];
   pageService.createpage( page2 );
 
   var page3 =  pageService.model;
   page3.pid = 'page3';
   page3.title = 'pagina 3';
-  page3.componenten = [
+  page3.components = [
     {name: 'example', title: 'Dit is een testcomponent', content: 'bla bla bla bla'},
     {name: 'example', title: 'Dit is een testcomponent2222', content: 'kdfioskfbla bla bla bla'}
   ];
