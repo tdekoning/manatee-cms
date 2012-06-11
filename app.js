@@ -58,9 +58,9 @@ var io = require('socket.io').listen( app )
 io.sockets.on('connection', websockets);
 
 var pageService = dbconnect.page;
-var pages = pageService.getpages( {}, function( err, pages ) {
+var pages = pageService.getPages( {}, function( err, pages ) {
   for( var i in pages ) {
-	  pageService.deletepage( { _id: pages[i]._id } );
+	  pageService.deletePage( { _id: pages[i]._id } );
   }
   createPages();
 });
@@ -74,7 +74,7 @@ function createPages() {
   page1.components = [
     {name: 'example', title: 'Dit is een testcomponent', content: 'bla bla bla bla'}
   ];
-  pageService.createpage( page1 );
+  pageService.createPage( page1 );
 
   var page2 =  pageService.model;
   page2.pid = 'page2';
@@ -82,7 +82,7 @@ function createPages() {
   page2.content = 'Dit is de content van pagina 2';
   page2.template = 'index';
   page2.components = [];
-  pageService.createpage( page2 );
+  pageService.createPage( page2 );
 
   var page3 =  pageService.model;
   page3.pid = 'page3';
@@ -94,6 +94,6 @@ function createPages() {
   ];
   page3.content = 'Dit is de content van pagina 3';
 
-  pageService.createpage( page3 );
+  pageService.createPage( page3 );
   
 }

@@ -4,11 +4,11 @@ var websocket = function ( socket ) {
 
 	socket.on('savePage', function( page ) {
 		console.log('save page: ', page);
-		pageDbService.updatepage( page );
+		pageDbService.updatePage( page );
 	});
 
 	socket.on('getPages', function() {
-		pageDbService.getpages({}, function( err, pages ) {
+		pageDbService.getPages({}, function( err, pages ) {
 			socket.emit('returnPages', pages);
 		});
 	});

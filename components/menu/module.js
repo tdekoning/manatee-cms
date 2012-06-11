@@ -9,7 +9,7 @@ var Component = function( res, config ) {
 	var template = 'components/menu/template.jade';
 	var data = {};
 	this.init = function() {
-		pageService.getpages(function( err, pages ) {
+		pageService.getPages(function( err, pages ) {
 			data = pages;
 		});
 	}

@@ -21,21 +21,21 @@ var pageModel = mongoose.model('pages', PageSchema);
 /*
  * Create a new page
  */
-function createpage( page ) {
+function createPage( page ) {
 	new pageModel( page ).save();
 }
 
 /*
  * Delete the given page
  */
-function deletepage( page ) {
+function deletePage( page ) {
 	pageModel.find( page ).remove();
 }
 
 /*
  * Modify page properties
  */
-function updatepage( page ) {
+function updatePage( page ) {
 	delete page._id;
 	pageModel.update( { pid: page.pid }, page, function( err, bla ) {
 		console.log(err, bla);
@@ -45,7 +45,7 @@ function updatepage( page ) {
 /*
  * Retrieve the pages
  */
-function getpages( page, callback ) {
+function getPages( page, callback ) {
 	pageModel.find(page, callback);
 }
 
@@ -53,9 +53,9 @@ function getpages( page, callback ) {
  * Public API
  */
 module.exports = {
-	getpages: getpages
-	, updatepage: updatepage
-	, deletepage : deletepage
+	getPages: getPages
+	, updatePage: updatePage
+	, deletePage : deletePage
 	, model : pageModel
-	, createpage : createpage
+	, createPage : createPage
 }

@@ -11,7 +11,7 @@ menu.init();
 function renderpage( pageId, req, res ) {
 	console.log('Rendering page: ' + pageId);
 
-	pageService.getpages({ pid: pageId }, function( err, pages ) {
+	pageService.getPages({ pid: pageId }, function( err, pages ) {
 		var page = pages[0];
 		page.renderedcomponents = [];
 		for( var i = 0; i < page.components.length; i++ ) {
