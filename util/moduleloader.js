@@ -1,7 +1,7 @@
 /*
  * Custom moduleloader that can load npm-defined modules or custom component modules.
  */
-
+var exceptions = require('../util/exceptions')
 
 /*
  * Load a build in module that matches the given name.
@@ -19,7 +19,12 @@ function loadBuildIn( modulename ) {
  * Loads a component module that matches the given name.
  */
 function loadComponentModule( modulename ) {
-	return require('../components/' + modulename + '/module.js');
+	try {
+		return require('../components/' + modulename + '/module.js');
+	} catch( exception ) {
+		// There is no component module defined.
+		throw new exceptions.ModuleNotFoundException( modulename );
+	}
 }
 
 /*
