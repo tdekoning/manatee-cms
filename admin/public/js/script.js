@@ -62,9 +62,10 @@
 			page = new Page();
 			page.pid = $('.currentpage .pid').val();
 			page.title = $('.title').val();
-			console.log( page );
+			page.components = JSON.parse($('.currentpage .components').val());
 			websocket.createPage( page );
 		} else {
+			page.components = JSON.parse($('.currentpage .components').val());
 			page.title = $('.title').val();
 			websocket.savePage( page );
 		}
@@ -87,6 +88,7 @@
 		var page = getPageById( $(this).data('pid') );
 		$('.currentpage').data('pid', page.pid);
 		$('.currentpage .pid').val( page.pid );
+		$('.currentpage .components').text( JSON.stringify( page.components ) );
 		$('.currentpage .title').text(page.title);
 		$('.currentpage .title').val( page.title );
 	});

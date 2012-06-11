@@ -2,7 +2,7 @@
 html
 	head
 		title Edit pages
-		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/css/style.css')
 	body
 		.newPage Create a new page
 		.pages
@@ -16,6 +16,8 @@ html
 				input.pid( type="text", value="" )
 			label Title:
 				input.title( type="text", value="" )
+			label Component config:
+				textarea.components( value="" )
 			button.savepage Save
 			button.deletepage Delete
 		script(src="/socket.io/socket.io.js")
