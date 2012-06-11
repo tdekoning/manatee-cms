@@ -14,6 +14,7 @@ PageSchema.add({
 	pid: String
 	, title: String
 	, content: String
+	, template: String
 	, components: [component]
 });
 

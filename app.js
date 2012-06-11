@@ -54,6 +54,7 @@ function createPages() {
   page1.pid = 'page1';
   page1.title = 'pagina 1';
   page1.content = 'Dit is de content van pagina 1';
+  page1.template = 'index';
   page1.components = [
     {name: 'example', title: 'Dit is een testcomponent', content: 'bla bla bla bla'}
   ];
@@ -63,12 +64,14 @@ function createPages() {
   page2.pid = 'page2';
   page2.title = 'pagina 2';
   page2.content = 'Dit is de content van pagina 2';
+  page2.template = 'index';
   page2.components = [];
   pageService.createpage( page2 );
 
   var page3 =  pageService.model;
   page3.pid = 'page3';
   page3.title = 'pagina 3';
+  page3.template = 'index';
   page3.components = [
     {name: 'example', title: 'Dit is een testcomponent', content: 'bla bla bla bla'},
     {name: 'example', title: 'Dit is een testcomponent2222', content: 'kdfioskfbla bla bla bla'}

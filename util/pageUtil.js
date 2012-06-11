@@ -22,7 +22,7 @@ function renderpage( pageId, req, res ) {
 			page.renderedcomponents[i] = module.render();
 		}
 		console.log('componenten: ' + page.renderedcomponents);
-		res.render('index', {page: page, menu: menu.render(), title: page.title, pageId: page.pid});
+		res.render( page.template, {page: page, menu: menu.render(), title: page.title, pageId: page.pid});
 	});
 }
 
