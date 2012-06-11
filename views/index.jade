@@ -1,7 +1,13 @@
-.menucontainer
-	#{menu}
-h1 #{page.title}
-p Welcome to #{page.title}
-p This is page #{page.pid}
-each component in page.renderedcomponents
-	#{component}
+!!!
+html
+	head
+		title= page.title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		.menucontainer
+			#{menu}
+		h1 #{page.title}
+		p Welcome to #{page.title}
+		p This is page #{page.pid}
+		each component in page.renderedcomponents
+			#{component}

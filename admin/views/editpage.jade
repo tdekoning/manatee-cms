@@ -1,0 +1,19 @@
+!!!
+html
+	head
+		title Edit pages
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		.pages
+			ul
+				each page in pages
+					li( data-pid="#{page.pid}" )
+						a #{page.title}
+
+		.currentpage(data-pid="#{pages[0].pid}")
+			.title #{pages[0].title}
+			input.pagecontent( type="text", value="#{pages[0].title}" )
+			button.savepage Save
+		script(src="/socket.io/socket.io.js")
+		script(src="/js/jquery.min.js")
+		script(src="/js/script.js")

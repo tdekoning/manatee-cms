@@ -36,7 +36,10 @@ function deletepage( page ) {
  * Modify page properties
  */
 function updatepage( page ) {
-	pageModel.find( { pid: page.pid } ).put( page );
+	delete page._id;
+	pageModel.update( { pid: page.pid }, page, function( err, bla ) {
+		console.log(err, bla);
+	});
 }
 
 /*

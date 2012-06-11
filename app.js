@@ -14,9 +14,11 @@ var app = module.exports = express.createServer();
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.set('view options', { layout: false });
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
+  app.use(express.static(__dirname + '/admin/public'));
   app.use(express.static(__dirname + '/public'));
 });
 
@@ -36,9 +38,24 @@ app.get('/pages/:pageId', function(req, res) {
 	routes.pages( req.params.pageId, req, res );
 });
 
+app.get('/admin/:page', function( req, res ) {
+  routes.admin( req.params.page, req, res );
+});
+
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
+
+
+
+
+/*
+ * Websockets
+ */
+var io = require('socket.io').listen( app )
+  , websockets = require('./admin/websocket')
+
+io.sockets.on('connection', websockets);
 
 var pageService = dbconnect.page;
 var pages = pageService.getpages( {}, function( err, pages ) {
