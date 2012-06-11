@@ -60,7 +60,7 @@ io.sockets.on('connection', websockets);
 var pageService = dbconnect.page;
 var pages = pageService.getPages( {}, function( err, pages ) {
   for( var i in pages ) {
-	  pageService.deletePage( { _id: pages[i]._id } );
+	  pageService.deletePage( pages[i] );
   }
   createPages();
 });

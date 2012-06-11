@@ -29,7 +29,7 @@ function createPage( page ) {
  * Delete the given page
  */
 function deletePage( page ) {
-	pageModel.find( page ).remove();
+	pageModel.find( { _id: page._id } ).remove();
 }
 
 /*

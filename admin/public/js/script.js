@@ -8,9 +8,14 @@
 		this.getPages = function() {
 			socket.emit('getPages');
 		}
+		this.addPage = function( page ) {
+			socket.emit('addPage', page);
+		}
 		this.savePage = function( page ) {
-			getPageById(  )
 			socket.emit('savePage', page);
+		}
+		this.deletePage = function( page ) {
+			socket.emit('deletePage', page);
 		}
 
 		/*
@@ -45,6 +50,11 @@
 		var page = getPageById( $('.currentpage').data('pid') );
 		page.title = $('.pagecontent').val();
 		websocket.savePage( page );
+	});
+
+	$('.deletepage').click(function() {
+		var page = getPageById( $('.currentpage').data('pid') );
+		websocket.deletePage( page );
 	});
 
 	/*
