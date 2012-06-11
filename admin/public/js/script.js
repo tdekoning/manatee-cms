@@ -88,7 +88,7 @@
 		var page = getPageById( $(this).data('pid') );
 		$('.currentpage').data('pid', page.pid);
 		$('.currentpage .pid').val( page.pid );
-		$('.currentpage .components').text( JSON.stringify( page.components ) );
+		$('.currentpage .components').val( JSON.stringify( page.components ) );
 		$('.currentpage .title').text(page.title);
 		$('.currentpage .title').val( page.title );
 	});
