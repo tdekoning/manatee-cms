@@ -11,8 +11,9 @@ var websocket = function ( socket ) {
 		pageDbService.deletePage( page );
 	});
 
-	socket.on('addPage', function( page ) {
-		pageDbService.addPage( page );
+	socket.on('createPage', function( page ) {
+		console.log('create page: ', page);
+		pageDbService.createPage( page );
 	});
 
 	socket.on('getPages', function() {

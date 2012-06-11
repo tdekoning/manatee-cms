@@ -13,6 +13,10 @@ function renderpage( pageId, req, res ) {
 
 	pageService.getPages({ pid: pageId }, function( err, pages ) {
 		var page = pages[0];
+		if( page == undefined ) {
+			res.send('This page does not exist.', 404);
+			return;
+		}
 		page.renderedcomponents = [];
 		for( var i = 0; i < page.components.length; i++ ) {
 

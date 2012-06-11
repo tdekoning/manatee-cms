@@ -2,14 +2,24 @@
 
 	var pages = [];
 
+	function Page() {
+
+		return {
+			title: ''
+			, components: []
+			, template: 'index'
+			, pid: ''
+		}
+	}
+
 	function WebSocket() {
 		var socket = io.connect( window.location.origin );
 
 		this.getPages = function() {
 			socket.emit('getPages');
 		}
-		this.addPage = function( page ) {
-			socket.emit('addPage', page);
+		this.createPage = function( page ) {
+			socket.emit('createPage', page);
 		}
 		this.savePage = function( page ) {
 			socket.emit('savePage', page);
@@ -48,14 +58,27 @@
 	 */
 	$('.savepage').click(function() {
 		var page = getPageById( $('.currentpage').data('pid') );
-		page.title = $('.pagecontent').val();
-		websocket.savePage( page );
+		if( page == undefined ) {
+			page = new Page();
+			page.pid = $('.currentpage .pid').val();
+			page.title = $('.title').val();
+			console.log( page );
+			websocket.createPage( page );
+		} else {
+			page.title = $('.title').val();
+			websocket.savePage( page );
+		}
 	});
 
 	$('.deletepage').click(function() {
 		var page = getPageById( $('.currentpage').data('pid') );
 		websocket.deletePage( page );
 	});
+	$('.newPage').click(function() {
+		// Reset the form.
+		$('.currentpage').data('pid', '');
+		$('.currentpage input').val('');
+	})
 
 	/*
 	 * Page clicklistener, activates the clicked page so it can be edited.
@@ -63,8 +86,9 @@
 	$('.pages li').click(function() {
 		var page = getPageById( $(this).data('pid') );
 		$('.currentpage').data('pid', page.pid);
+		$('.currentpage .pid').val( page.pid );
 		$('.currentpage .title').text(page.title);
-		$('.currentpage .pagecontent').val( page.title );
+		$('.currentpage .title').val( page.title );
 	});
 
 })( jQuery )

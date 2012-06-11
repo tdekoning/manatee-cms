@@ -4,15 +4,18 @@ html
 		title Edit pages
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
+		.newPage Create a new page
 		.pages
 			ul
 				each page in pages
 					li( data-pid="#{page.pid}" )
 						a #{page.title}
 
-		.currentpage(data-pid="#{pages[0].pid}")
-			.title #{pages[0].title}
-			input.pagecontent( type="text", value="#{pages[0].title}" )
+		.currentpage(data-pid="")
+			label Page id:
+				input.pid( type="text", value="" )
+			label Title:
+				input.title( type="text", value="" )
 			button.savepage Save
 			button.deletepage Delete
 		script(src="/socket.io/socket.io.js")
