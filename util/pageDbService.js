@@ -1,8 +1,13 @@
+/*
+ * This file contains the logic of performing CRUD on the cms-pages.
+ */
+
 var   mongoose = require('mongoose')
 	, Schema = mongoose.Schema
 
 var PageSchema = new Schema();
 
+// Defined the page attributes.
 PageSchema.add({
 	pid: String
 	, title: String
@@ -13,18 +18,11 @@ PageSchema.add({
 
 var pageModel = mongoose.model('pages', PageSchema);
 
-var pagePrototype = {
-	pid: undefined
-	, title: undefined
-	, content: undefined
-};
-
 /*
  * Create a new page
  */
 function createpage( page ) {
-	var tmpPage = new pageModel( page );
-	tmpPage.save();
+	new pageModel( page ).save();
 }
 
 /*
